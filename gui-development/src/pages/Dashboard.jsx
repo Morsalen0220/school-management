@@ -32,7 +32,7 @@ export default function Dashboard({ children }) {
         <Header />
         <div className="flex">
           <Sidebar />
-          <main className="bg-white w-full m-2 mr-0 shadow-lg relative z-10 rounded-sm p-2">
+          <main className="bg-white w-full m-2 mr-0 mb-0 shadow-lg relative z-10 rounded-sm p-2">
             {children}
           </main>
         </div>
