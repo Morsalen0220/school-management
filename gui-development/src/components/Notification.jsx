@@ -1,19 +1,25 @@
 import CloseButton from "./button/CloseButton";
 
-export default function Notification({ type = "", onClose, closeOnBGClick = false, children, ...props }) {
+export default function Notification({
+  type = "",
+  onClose,
+  closeOnBGClick = false,
+  children,
+  ...props
+}) {
   let bgClass = "";
   let fgClass = "";
 
   switch (type) {
     case "warning":
-      bgClass = "bg-gradient-to-r from-yellow-300 to-yellow-400"
+      bgClass = "bg-gradient-to-r from-yellow-300 to-yellow-400";
       break;
     case "error":
-      bgClass = "bg-gradient-to-r from-red-600 to-red-700"
+      bgClass = "bg-gradient-to-r from-red-600 to-red-700";
       fgClass = "text-white";
       break;
     case "info":
-      bgClass = "bg-gradient-to-r from-blue-500 to-blue-600"
+      bgClass = "bg-gradient-to-r from-blue-500 to-blue-600";
       fgClass = "text-white";
       break;
     default:
@@ -24,12 +30,10 @@ export default function Notification({ type = "", onClose, closeOnBGClick = fals
   return (
     <>
       <div
-        className={`absolute bottom-5 right-5 rounded-md p-2 px-4 shadow-xl max-w-xs lg:max-w-md flex items-center z-50 transition ${bgClass}`}
-        {...props}
-      >
+        className={`fixed bottom-5 right-5 rounded-md p-2 px-4 shadow-xl max-w-xs lg:max-w-md flex items-center z-50 transition ${bgClass}`}
+        {...props}>
         <span
-          className={`block font-bold font-lato leading-5 tracking-wide text-start ${fgClass}`}
-        >
+          className={`block font-lato leading-5 tracking-wide text-start text-base ${fgClass}`}>
           {children}
         </span>
         <span className="inline-block p-2" onClick={onClose}>
