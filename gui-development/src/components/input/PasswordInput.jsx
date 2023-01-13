@@ -21,13 +21,12 @@ export default function PasswordInput({ ...props }) {
     <div className="relative">
       <input
         type={type}
-        className="bg-slate-100 border-gray-500  border-2 p-1 rounded-sm w-full focus:border-gray-800 text-lg text-gray-900"
+        className="bg-slate-50 border-2 p-1 rounded-sm w-full focus:border-gray-500 focus:outline-none text-lg text-gray-900"
         {...props}
       />
       <span
         onClick={togglePassword}
-        className="inline-block absolute top-0 right-1 p-1 cursor-pointer"
-      >
+        className="inline-block absolute top-0 right-1 p-1 cursor-pointer">
         <img alt="toggle" src={img} />
       </span>
     </div>
