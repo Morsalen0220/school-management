@@ -17,9 +17,11 @@ function MenuItem({
   return (
     <Link
       className={`inline-block font-sans px-4 text-left border-b-2 ${
+        topLevelMenu ? "" : "last:border-b-0 "
+      } ${
         active
           ? topLevelMenu
-            ? "bg-emerald-300 text-white border-white font-semibold"
+            ? "bg-emerald-300 text-gray-900 border-white font-semibold"
             : "bg-gray-100"
           : "text-black hover:bg-gray-100"
       }`}
@@ -31,7 +33,7 @@ function MenuItem({
 }
 
 export default function Sidebar({ ...props }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { pathname } = useResolvedPath();
   const [openMenu, setOpenMenu] = useState([]);
 
@@ -48,6 +50,13 @@ export default function Sidebar({ ...props }) {
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
+
+  useEffect(() => {
+    /**
+     * On big screen side should be open by default
+     */
+    if (window.innerWidth > 1024) setIsMenuOpen(true);
+  }, []);
 
   /**
    * @param {string} menu
