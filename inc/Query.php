@@ -4,30 +4,36 @@
  */
 
 # Include config file
-require_once __DIR__ . '/../config.php';
-require_once __DIR__ . '/CustomException.php';
-require_once __DIR__ . '/DB.php';
+require_once __DIR__ . "/../config.php";
+require_once __DIR__ . "/CustomException.php";
+require_once __DIR__ . "/DB.php";
 
-class Query extends CustomException {
-    private $_connection   = null;
-    private $_table_prefix = TABLE_PREFIX;
+class Query extends CustomException
+{
+  private $_connection = null;
+  private $_table_prefix = TABLE_PREFIX;
 
-    /**
-     * Setup connection
-     * @param Connection database connection
-     */
-    public function __construct(PDO $db) {
-        $this->_connection = $db;
-    }
+  /**
+   * Setup connection
+   * @param Connection database connection
+   */
+  public function __construct(PDO $db)
+  {
+    $this->_connection = $db;
+  }
 
-################################ Create table start ###################################
+  ################################ Create table start ###################################
 
-    /**
-     * Create table school
-     * @return Query for method chaining
-     */
-    public function create_table_school(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "school (
+  /**
+   * Create table school
+   * @return Query for method chaining
+   */
+  public function create_table_school(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "school (
                 id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 school_id VARCHAR(500) NOT NULL UNIQUE,
                 name VARCHAR(500) NOT NULL,
@@ -39,16 +45,20 @@ class Query extends CustomException {
                 admin_list MEDIUMTEXT NULL,
                 created_at DATETIME DEFAULT CURRENT_TIMESTAMP
             )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table student
-     * @return Query for method chaining
-     */
-    public function create_table_student(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "student (
+  /**
+   * Create table student
+   * @return Query for method chaining
+   */
+  public function create_table_student(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "student (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             user_id VARCHAR(500) NOT NULL UNIQUE,
             name VARCHAR(500) NOT NULL,
@@ -75,16 +85,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table teacher
-     * @return Query for method chaining
-     */
-    public function create_table_teacher(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "teacher (
+  /**
+   * Create table teacher
+   * @return Query for method chaining
+   */
+  public function create_table_teacher(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "teacher (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             user_id VARCHAR(500) NOT NULL UNIQUE,
             name VARCHAR(500) NOT NULL,
@@ -104,16 +118,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table super admin
-     * @return Query for method chaining
-     */
-    public function create_table_super_admin(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "super_admin (
+  /**
+   * Create table super admin
+   * @return Query for method chaining
+   */
+  public function create_table_super_admin(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "super_admin (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             user_id VARCHAR(500) NOT NULL,
             name VARCHAR(500) NOT NULL,
@@ -123,16 +141,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table admin
-     * @return Query for method chaining
-     */
-    public function create_table_admin(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "admin (
+  /**
+   * Create table admin
+   * @return Query for method chaining
+   */
+  public function create_table_admin(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "admin (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             user_id VARCHAR(500) NOT NULL,
             name VARCHAR(500) NOT NULL,
@@ -143,16 +165,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table accountant
-     * @return Query for method chaining
-     */
-    public function create_table_accountant(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "accountant (
+  /**
+   * Create table accountant
+   * @return Query for method chaining
+   */
+  public function create_table_accountant(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "accountant (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             accountant_id VARCHAR(500) NULL,
             name VARCHAR(500) NOT NULL,
@@ -168,16 +194,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table librarian
-     * @return Query for method chaining
-     */
-    public function create_table_librarian(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "librarian (
+  /**
+   * Create table librarian
+   * @return Query for method chaining
+   */
+  public function create_table_librarian(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "librarian (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             librarian_id VARCHAR(500) NULL,
             name VARCHAR(500) NOT NULL,
@@ -195,16 +225,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create sessions table
-     * @return Query for method chaining
-     */
-    public function create_table_session(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "session (
+  /**
+   * Create sessions table
+   * @return Query for method chaining
+   */
+  public function create_table_session(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "session (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             user_id VARCHAR(500) NOT NULL,
             role VARCHAR(500) NOT NULL,
@@ -216,16 +250,20 @@ class Query extends CustomException {
             ip_address VARCHAR(200) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table grade
-     * @return Query for method chaining
-     */
-    public function create_table_grade(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "grade (
+  /**
+   * Create table grade
+   * @return Query for method chaining
+   */
+  public function create_table_grade(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "grade (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             min INT NOT NULL,
             name VARCHAR(200) NOT NULL,
@@ -235,16 +273,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table event
-     * @return Query for method chaining
-     */
-    public function create_table_event(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "event (
+  /**
+   * Create table event
+   * @return Query for method chaining
+   */
+  public function create_table_event(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "event (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(500) NOT NULL,
             type VARCHAR(500) NULL,
@@ -255,16 +297,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table transaction
-     * @return Query for method chaining
-     */
-    public function create_table_transaction(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "transaction (
+  /**
+   * Create table transaction
+   * @return Query for method chaining
+   */
+  public function create_table_transaction(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "transaction (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             user_id VARCHAR(500) NULL,
             type VARCHAR(500) NULL,
@@ -275,16 +321,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table notice
-     * @return Query for method chaining
-     */
-    public function create_table_notice(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "notice (
+  /**
+   * Create table notice
+   * @return Query for method chaining
+   */
+  public function create_table_notice(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "notice (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(500) NOT NULL,
             type VARCHAR(500) NULL,
@@ -295,16 +345,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table class
-     * @return Query for method chaining
-     */
-    public function create_table_class(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "class (
+  /**
+   * Create table class
+   * @return Query for method chaining
+   */
+  public function create_table_class(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "class (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             class_id VARCHAR(500) NOT NULL,
             name VARCHAR(500) NOT NULL,
@@ -314,16 +368,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table attendance
-     * @return Query for method chaining
-     */
-    public function create_table_attendance(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "attendance (
+  /**
+   * Create table attendance
+   * @return Query for method chaining
+   */
+  public function create_table_attendance(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "attendance (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             class_id VARCHAR(500) NULL,
             student_id VARCHAR(500) NOT NULL,
@@ -332,16 +390,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table holiday
-     * @return Query for method chaining
-     */
-    public function create_table_holiday(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "holiday (
+  /**
+   * Create table holiday
+   * @return Query for method chaining
+   */
+  public function create_table_holiday(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "holiday (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             date DATETIME NOT NULL,
             is_repeat INT(1) NOT NULL DEFAULT 0,
@@ -350,16 +412,20 @@ class Query extends CustomException {
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table exam
-     * @return Query for method chaining
-     */
-    public function create_table_exam(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "exam (
+  /**
+   * Create table exam
+   * @return Query for method chaining
+   */
+  public function create_table_exam(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "exam (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(500) NOT NULL,
             type VARCHAR(500) NOT NULL,
@@ -369,16 +435,20 @@ class Query extends CustomException {
             comment VARCHAR(500) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table routine
-     * @return Query for method chaining
-     */
-    public function create_table_routine(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "routine (
+  /**
+   * Create table routine
+   * @return Query for method chaining
+   */
+  public function create_table_routine(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "routine (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(500) NOT NULL,
             type VARCHAR(500) NOT NULL,
@@ -389,16 +459,20 @@ class Query extends CustomException {
             comment VARCHAR(500) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table result
-     * @return Query for method chaining
-     */
-    public function create_table_result(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "result (
+  /**
+   * Create table result
+   * @return Query for method chaining
+   */
+  public function create_table_result(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "result (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             exam_id VARCHAR(500) NOT NULL,
             user_id VARCHAR(500) NOT NULL,
@@ -408,33 +482,41 @@ class Query extends CustomException {
             comment VARCHAR(500) NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create image table
-     * @return Query for method chaining
-     */
-    public function create_table_image(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "image (
+  /**
+   * Create image table
+   * @return Query for method chaining
+   */
+  public function create_table_image(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "image (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(500) UNIQUE NOT NULL,
             school_id VARCHAR(500) NOT NULL,
             user_id VARCHAR(500) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create media table
-     * Store all type of file info
-     * @return Query for method chaining
-     */
-    public function create_table_media(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "media (
+  /**
+   * Create media table
+   * Store all type of file info
+   * @return Query for method chaining
+   */
+  public function create_table_media(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "media (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             name VARCHAR(500) NOT NULL,
             type VARCHAR(500) NOT NULL,
@@ -444,16 +526,20 @@ class Query extends CustomException {
             added_by VARCHAR(500) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table request
-     * @return Query for method chaining
-     */
-    public function create_table_request(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "request (
+  /**
+   * Create table request
+   * @return Query for method chaining
+   */
+  public function create_table_request(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "request (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             subject VARCHAR(500) NOT NULL,
             text MEDIUMTEXT NOT NULL,
@@ -464,16 +550,20 @@ class Query extends CustomException {
             added_by VARCHAR(500) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table book
-     * @return Query for method chaining
-     */
-    public function create_table_book(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "book (
+  /**
+   * Create table book
+   * @return Query for method chaining
+   */
+  public function create_table_book(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "book (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             book_id VARCHAR(500) NOT NULL,
             name VARCHAR(500) NOT NULL,
@@ -484,16 +574,20 @@ class Query extends CustomException {
             added_by VARCHAR(500) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
-    }
+    $this->_connection->exec($sql);
+    return $this;
+  }
 
-    /**
-     * Create table book transaction
-     * @return Query for method chaining
-     */
-    public function create_table_book_transaction(): Query {
-        $sql = "CREATE TABLE " . $this->_table_prefix . "book_transaction (
+  /**
+   * Create table book transaction
+   * @return Query for method chaining
+   */
+  public function create_table_book_transaction(): Query
+  {
+    $sql =
+      "CREATE TABLE " .
+      $this->_table_prefix .
+      "book_transaction (
             id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
             book_id VARCHAR(500) NOT NULL,
             user_id VARCHAR(500) NOT NULL,
@@ -504,198 +598,220 @@ class Query extends CustomException {
             added_by VARCHAR(500) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )";
-        $this->_connection->exec($sql);
-        return $this;
+    $this->_connection->exec($sql);
+    return $this;
+  }
+
+  ################################ Create table end ###################################
+
+  /**
+   * Insert data
+   * @param string table name
+   * @param array [column name => value]
+   */
+  public static function insert(string $table_name, array $data): void
+  {
+    $sql = "INSERT INTO " . TABLE_PREFIX . $table_name . " ";
+    $columns = "";
+    $values = "";
+    $index = 0;
+
+    # Handle column and value
+    foreach ($data as $column => $value) {
+      if ($index > 0) {
+        $columns .= ", $column";
+        $values .= ", '$value'";
+      } else {
+        $columns .= $column;
+        $values .= "'$value'";
+      }
+
+      $index++;
     }
 
-################################ Create table end ###################################
+    $sql .= "( $columns ) VALUES ( $values )";
 
+    # Execute query
+    DB::connect_write_DB()->exec($sql);
+  }
+
+  /**
+   * Update data
+   * @param string table name
+   * @param array [column name => value]
+   * @param array [column => value] where to update
+   * @param int how many
+   */
+  public static function update(
+    string $table_name,
+    array $data,
+    array $where,
+    int $limit = 0
+  ): array {
+    $sql = "UPDATE " . TABLE_PREFIX . $table_name . " SET ";
     /**
-     * Insert data
-     * @param string table name
-     * @param array [column name => value]
+     * Handle column and value to update
      */
-    public static function insert(string $table_name, array $data): void {
-        $sql     = "INSERT INTO " . TABLE_PREFIX . $table_name . " ";
-        $columns = "";
-        $values  = "";
-        $index   = 0;
-
-        # Handle column and value
-        foreach ($data as $column => $value) {
-            if ($index > 0) {
-                $columns .= ", $column";
-                $values .= ", '$value'";
-            } else {
-                $columns .= $column;
-                $values .= "'$value'";
-            }
-
-            $index++;
-        }
-
-        $sql .= "( $columns ) VALUES ( $values )";
-
-        # Execute query
-        DB::connect_write_DB()->exec($sql);
+    $index = 0;
+    foreach ($data as $column => $value) {
+      $index !== 0 ? ($sql .= ", ") : " ";
+      $sql .= "$column = '$value' ";
+      $index++;
     }
-
+    $sql .= "WHERE ";
     /**
-     * Update data
-     * @param string table name
-     * @param array [column name => value]
-     * @param array [column => value] where to update
-     * @param int how many
+     * Handle column and data where to update
      */
-    public static function update(string $table_name, array $data, array $where, int $limit = 0): array{
-        $sql = "UPDATE " . TABLE_PREFIX . $table_name . " SET ";
-        /**
-         * Handle column and value to update
-         */
-        $index = 0;
-        foreach ($data as $column => $value) {
-            $index !== 0 ? $sql .= ', ' : ' ';
-            $sql .= "$column = '$value' ";
-            $index ++;
-        }
-        $sql .= "WHERE ";
-        /**
-         * Handle column and data where to update
-         */
-        $index = 0;
-        foreach ($where as $column => $value) {
-            $index !== 0 ? $sql .= "AND " : false;
-            $sql .= "$column = '$value' ";
-            $index ++;
-        }
-        if ($limit !== 0) {
-            $sql .= "LIMIT $limit";
-        }
-        echo $sql;
-        $stmt = DB::connect_write_DB()->prepare($sql);
-        $stmt->execute();
-
-        // Get updated data and return
-        return self::get_specific(
-            $table_name,
-            [],
-            $where
-        );
+    $index = 0;
+    foreach ($where as $column => $value) {
+      $index !== 0 ? ($sql .= "AND ") : false;
+      $sql .= "$column = '$value' ";
+      $index++;
     }
-
-    /**
-     * Delete data
-     * @param string table name
-     * @param array [column => value] where to delete
-     * @param bool is deleted
-     */
-    public static function delete(string $table_name, array $where, int $limit = 0): bool {
-        $sql = "DELETE FROM " . TABLE_PREFIX . $table_name . " WHERE ";
-        # Handle column and data where to update
-        foreach ($where as $column => $value) {
-            $sql .= "$column = '$value' ";
-        }
-        if ($limit !== 0) {
-            $sql .= "LIMIT $limit";
-        }
-        $stmt = DB::connect_write_DB()->prepare($sql);
-        $stmt->execute();
-        return $stmt->rowCount() !== 0;
+    if ($limit !== 0) {
+      $sql .= "LIMIT $limit";
     }
+    echo $sql;
+    $stmt = DB::connect_write_DB()->prepare($sql);
+    $stmt->execute();
 
+    // Get updated data and return
+    return self::get_specific($table_name, [], $where);
+  }
+
+  /**
+   * Delete data
+   * @param string table name
+   * @param array [column => value] where to delete
+   * @return bool is deleted
+   */
+  public static function delete(
+    string $table_name,
+    array $where,
+    int $limit = 0
+  ): bool {
+    $key = 0;
+    $sql = "DELETE FROM " . TABLE_PREFIX . $table_name . " WHERE ";
+    # Handle column and data where to update
+    foreach ($where as $column => $value) {
+      if ($key === 0) {
+        $sql .= "$column = '$value' ";
+      } else {
+        $sql .= "AND $column = '$value' ";
+      }
+      $key += 1;
+    }
+    if ($limit !== 0) {
+      $sql .= "LIMIT $limit";
+    }
+    $stmt = DB::connect_write_DB()->prepare($sql);
+    $stmt->execute();
+    return $stmt->rowCount() !== 0;
+  }
+
+  /**
+   * Get all data
+   * @param string table name
+   * @param array column name empty for all
+   * @param bool ascending order
+   * @param int limit
+   * @return array data
+   */
+  public static function get_all(
+    string $table_name,
+    array $column_name = [],
+    bool $asc = true,
+    int $limit = 0
+  ): array {
+    $sql = "SELECT ";
     /**
-     * Get all data
-     * @param string table name
-     * @param array column name empty for all
-     * @param bool ascending order
-     * @param int limit
-     * @return array data
+     * Handle column
+     * if no item is present on array select *
      */
-    public static function get_all(string $table_name, array $column_name = [], bool $asc = true, int $limit = 0): array{
-        $sql = "SELECT ";
-        /**
-         * Handle column
-         * if no item is present on array select *
-         */
-        if (count($column_name) !== 0) {
-            foreach ($column_name as $key => $column) {
-                if ($key === 0) {
-                    $sql .= "$column";
-                } else {
-                    $sql .= ", $column";
-                }
-            }
+    if (count($column_name) !== 0) {
+      foreach ($column_name as $key => $column) {
+        if ($key === 0) {
+          $sql .= "$column";
         } else {
-            $sql .= "*";
+          $sql .= ", $column";
         }
-        $sql .= " FROM " . TABLE_PREFIX . $table_name . " ORDER BY id ";
-
-        # Handle order
-        if ($asc) {
-            $sql .= "ASC";
-        } else {
-            $sql .= "DESC";
-        }
-        if ($limit !== 0) {
-            $sql .= "LIMIT $limit";
-        }
-        $stmt = DB::connect_read_DB()->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+      }
+    } else {
+      $sql .= "*";
     }
+    $sql .= " FROM " . TABLE_PREFIX . $table_name . " ORDER BY id ";
+
+    # Handle order
+    if ($asc) {
+      $sql .= "ASC";
+    } else {
+      $sql .= "DESC";
+    }
+    if ($limit !== 0) {
+      $sql .= "LIMIT $limit";
+    }
+    $stmt = DB::connect_read_DB()->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  /**
+   * Get specific columns
+   * @param string table name
+   * @param array column name empty for all
+   * @param array where to select
+   * @param bool is ascending order
+   * @param int limit
+   * @return array data
+   */
+  public static function get_specific(
+    string $table_name,
+    array $column_name = [],
+    array $where,
+    bool $asc = true,
+    int $limit = 0
+  ): array {
+    $sql = "SELECT ";
 
     /**
-     * Get specific columns
-     * @param string table name
-     * @param array column name empty for all
-     * @param array where to select
-     * @param bool is ascending order
-     * @param int limit
-     * @return array data
+     * Handle column
+     * if no item is present on array select *
      */
-    public static function get_specific(string $table_name, array $column_name = [], array $where, bool $asc = true, int $limit = 0): array{
-        $sql = "SELECT ";
-
-        /**
-         * Handle column
-         * if no item is present on array select *
-         */
-        if (count($column_name) !== 0) {
-            foreach ($column_name as $key => $column) {
-                if ($key === 0) {
-                    $sql .= "$column";
-                } else {
-                    $sql .= ", $column";
-                }
-            }
+    if (count($column_name) !== 0) {
+      foreach ($column_name as $key => $column) {
+        if ($key === 0) {
+          $sql .= "$column";
         } else {
-            $sql .= "*";
+          $sql .= ", $column";
         }
-        $sql .= " FROM " . TABLE_PREFIX . $table_name . " WHERE ";
+      }
+    } else {
+      $sql .= "*";
+    }
+    $sql .= " FROM " . TABLE_PREFIX . $table_name . " WHERE ";
 
-        /**
-         * Handle where to select
-         */
-        $index = 0;
-        foreach ($where as $column => $value) {
-            $index !== 0 ? $sql .= 'AND ' : false;
-            $sql .= "$column = '$value' ";
-            $index++;
-        }
-
-        # Handle order
-        $sql .= "ORDER BY id ";
-        if ($asc) {
-            $sql .= "ASC";
-        } else {
-            $sql .= "DESC";
-        }
-        if ($limit !== 0) {
-            $sql .= " LIMIT $limit";
-        }
-        $stmt = DB::connect_read_DB()->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    /**
+     * Handle where to select
+     */
+    $index = 0;
+    foreach ($where as $column => $value) {
+      $index !== 0 ? ($sql .= "AND ") : false;
+      $sql .= "$column = '$value' ";
+      $index++;
     }
 
+    # Handle order
+    $sql .= "ORDER BY id ";
+    if ($asc) {
+      $sql .= "ASC";
+    } else {
+      $sql .= "DESC";
+    }
+    if ($limit !== 0) {
+      $sql .= " LIMIT $limit";
+    }
+    $stmt = DB::connect_read_DB()->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
 }

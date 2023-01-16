@@ -15,7 +15,7 @@ function MenuLink({ to, children, ...props }) {
 
 function Menu() {
   return (
-    <div className="absolute right-4 shadow-2xl rounded-sm bg-white">
+    <div className="absolute right-4 shadow-2xl rounded-sm bg-white z-20">
       <MenuLink to="/profile">Profile</MenuLink>
       <MenuLink to="/settings">Settings</MenuLink>
       <hr />
@@ -24,10 +24,10 @@ function Menu() {
   );
 }
 
-export default function Topbar({ ...props }) {
+export default function Header({ ...props }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
-    <header className="relative z-0" {...props}>
+    <header className="relative" {...props}>
       <div className="h-full bg-white shadow-xl p-2 flex justify-between items-center">
         <h4 className="font-lato text-lg font-semibold">Title here</h4>
         <div>
