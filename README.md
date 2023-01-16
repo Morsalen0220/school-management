@@ -1,8 +1,14 @@
 # School management system
-
-## [DEMO](http://school.triksy.xyz/)
-
 ### Work in progress
+## [DEMO](http://school.triksy.xyz/)
+super admin email 
+```
+admin@example.com
+```
+super admin password
+```
+admin12345
+```
 
 ## Backend Technology
 
