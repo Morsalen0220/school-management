@@ -1,11 +1,16 @@
 import { useState } from "react";
+import Label from "./Label";
 
-export default function ImageUpload({ ...props }) {
-  const [file, setFile] = useState("");
+export default function ImageUpload({ setFile, ...props }) {
   const [previewImage, setPreviewImage] = useState("");
   const updateImage = (e) => {
-    if (e.target.files.length === 0) return;
-    setFile(e.target.value);
+    const [file] = e.target.files;
+    setFile(file);
+    if (file) {
+      setPreviewImage(URL.createObjectURL(file));
+    } else {
+      setPreviewImage("");
+    }
   };
   return (
     <div>
@@ -13,11 +18,17 @@ export default function ImageUpload({ ...props }) {
         type="file"
         accept="image/jpeg,image/png,image/gif"
         className="bg-gray-50 w-full border-2 outline-none cursor-pointer rounded-sm"
-        defaultValue={file}
         onChange={updateImage}
         {...props}
       />
-      {previewImage !== "" && <img src={previewImage} alt="preview" />}
+      {previewImage && (
+        <>
+          <Label>Preview</Label>
+          <div className="p-2 border-2 mt-2 rounded-sm">
+            <img src={previewImage} alt="preview" />
+          </div>
+        </>
+      )}
     </div>
   );
 }
