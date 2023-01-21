@@ -4,18 +4,18 @@ module.exports = {
     "./public/index.html",
     "./src/components/**/*.jsx",
     "./src/hooks/**/.js",
-    "./src/pages/**/*.jsx"
+    "./src/pages/**/*.jsx",
   ],
   theme: {
     extend: {
       fontFamily: {
-        'lato': ['Lato', 'sans-serif']
+        lato: ["Lato", "sans-serif"],
       },
       backgroundImage: {
-        'img-close-white': "url('" + __dirname + "/src/img/close/white.png')",
-        'img-close-red': "url('" + __dirname + "/src/img/close/red.png')",
+        "img-close-white": "url('" + __dirname + "/src/img/close/white.png')",
+        "img-close-red": "url('" + __dirname + "/src/img/close/red.png')",
       },
     },
   },
   plugins: [],
-}
+};
