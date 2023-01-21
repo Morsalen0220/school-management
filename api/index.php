@@ -285,7 +285,10 @@ try {
      * Handle all image action
      */
     case "image":
-      $request->get("Image", "return_all")->post("Image", "upload");
+      $request
+        ->auth("any")
+        ->get("Image", "return_all")
+        ->post("Image", "upload");
       send_response(false, 405, ["method not allowed"]);
       break;
 
