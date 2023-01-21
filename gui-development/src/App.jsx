@@ -1,6 +1,7 @@
-import "./css/App.css";
+import "react-phone-input-2/lib/style.css";
 import { Routes, Route, Outlet } from "react-router-dom";
 import { lazy, Suspense } from "react";
+import "./css/App.css";
 import Loading from "./components/Loading";
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const NotFound = lazy(() => import("./pages/NotFound"));
