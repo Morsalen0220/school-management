@@ -27,6 +27,8 @@ export default function Schools({ ...props }) {
       });
   }, []);
 
+  console.log(data);
+
   return (
     <div {...props}>
       school
