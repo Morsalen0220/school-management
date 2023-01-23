@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Notification from "../../components/Notification";
 import http from "../../util/http";
+import getSearchParameter from "../../util/getSearchParam";
 import useLoading from "../../hooks/useLoading";
 import useUpdateTitle from "../../hooks/useUpdateTitle";
+import Table from "../../components/table/Table";
 
 export default function Schools({ ...props }) {
   useUpdateTitle("School");
@@ -10,11 +12,45 @@ export default function Schools({ ...props }) {
   const [loading, setLoading] = useState(true);
   const [notification, setNotification] = useState({});
   useLoading(loading);
+
+  const [order, setOrder] = useState("asc");
+  const [orderBy, setOrderBy] = useState("id");
+  const [search, setSearch] = useState("");
+  const [searchBy, setSearchBy] = useState("");
+  const [itemsPerPage, setItemsPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    const params = {
+      order: getSearchParameter("order"),
+      orderBy: getSearchParameter("order_by"),
+      search: getSearchParameter("search"),
+      searchBy: getSearchParameter("search_by"),
+      itemsPerPage: getSearchParameter("limit"),
+      currentPage: getSearchParameter("page"),
+    };
+
+    console.log(params);
+
+    if (params.order) setOrder(params.order);
+    if (params.orderBy) setOrderBy(params.orderBy);
+    if (params.search) setSearch(params.search);
+    if (params.searchBy) setSearchBy(params.searchBy);
+    if (params.itemsPerPage) setItemsPerPage(parseInt(params.itemsPerPage));
+    if (params.currentPage) setCurrentPage(parseInt(params.currentPage));
+  }, []);
+
+  console.log(itemsPerPage);
+
   useEffect(() => {
     http
-      .get("/school")
+      .get(
+        `/school?page=${currentPage}&order=${order}&order_by=${orderBy}&limit=${itemsPerPage}&search=${search}&search_by=${searchBy}`
+      )
       .then((data) => {
         setData(data["data"]["data"]);
+        setTotal(data["data"]["total_data_length"]);
       })
       .catch((error) => {
         setNotification({
@@ -25,13 +61,38 @@ export default function Schools({ ...props }) {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
-
-  console.log(data);
+  }, [currentPage, itemsPerPage, order, orderBy, search, searchBy]);
 
   return (
     <div {...props}>
-      school
+      <h2 className="text-2xl mb-3 border-b-2 font-lato font-semibold">
+        Schools
+      </h2>
+      <Table
+        order={order}
+        setOrder={setOrder}
+        orderBy={orderBy}
+        setOrderBy={setOrderBy}
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        search={search}
+        setSearch={setSearch}
+        searchBy={searchBy}
+        setSearchBy={setSearchBy}
+        total={total}
+        title={[
+          "id",
+          "name",
+          "mobile_number",
+          "email",
+          "address",
+          "description",
+        ]}
+        footer={true}
+        data={data}
+      />
       {notification.text && (
         <Notification
           type={notification.type}

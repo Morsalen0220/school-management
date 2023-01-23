@@ -709,25 +709,18 @@ class Query extends CustomException
     return $stmt->rowCount() !== 0;
   }
 
-  /**
-   * Get all data
-   * @param string table name
-   * @param array column name empty for all
-   * @param bool ascending order
-   * @param int limit
-   * @return array data
-   */
   public static function get_all(
     string $table_name,
     array $column_name = [],
-    bool $asc = true,
-    int $limit = 0
+    bool $ascOrder = true,
+    string $orderBy = "id",
+    int $page = 1,
+    int $limit = 0,
+    string $search = "",
+    string $search_by = ""
   ): array {
     $sql = "SELECT ";
-    /**
-     * Handle column
-     * if no item is present on array select *
-     */
+
     if (count($column_name) !== 0) {
       foreach ($column_name as $key => $column) {
         if ($key === 0) {
@@ -739,16 +732,23 @@ class Query extends CustomException
     } else {
       $sql .= "*";
     }
-    $sql .= " FROM " . TABLE_PREFIX . $table_name . " ORDER BY id ";
+
+    $sql .= " FROM " . TABLE_PREFIX . $table_name;
+
+    if (strlen($search) !== 0 && strlen($search_by) !== 0) {
+      $sql .= " WHERE $search_by LIKE '%$search%'";
+    }
+
+    $sql .= " ORDER BY $orderBy ";
 
     # Handle order
-    if ($asc) {
+    if ($ascOrder) {
       $sql .= "ASC";
     } else {
       $sql .= "DESC";
     }
     if ($limit !== 0) {
-      $sql .= "LIMIT $limit";
+      $sql .= " LIMIT $limit OFFSET " . (int) $limit * ($page - 1);
     }
     $stmt = DB::connect_read_DB()->prepare($sql);
     $stmt->execute();
@@ -813,5 +813,15 @@ class Query extends CustomException
     $stmt = DB::connect_read_DB()->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function count_all(string $table_name): int
+  {
+    $stmt = DB::connect_read_DB()->prepare(
+      "SELECT COUNT(id) AS total FROM $table_name"
+    );
+    $stmt->execute();
+    $data = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $data["total"];
   }
 }
