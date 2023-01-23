@@ -16,8 +16,34 @@ class School
    */
   public static function get(): void
   {
-    $data = Query::get_all(self::$_table_name);
-    send_response(true, 200, ["schools returned successfully"], $data, true);
+    $page = isset($_GET["page"]) ? (int) $_GET["page"] : 1;
+    $limit = isset($_GET["limit"]) ? (int) $_GET["limit"] : 10;
+    $order = isset($_GET["order"]) ? (string) $_GET["order"] : "asc";
+    $order_by = isset($_GET["order_by"]) ? (string) $_GET["order_by"] : "id";
+    $search = isset($_GET["search"]) ? (string) $_GET["search"] : "";
+    $search_by = isset($_GET["search_by"]) ? (string) $_GET["search_by"] : "id";
+
+    $data = Query::get_all(
+      self::$_table_name,
+      [],
+      $order === "asc",
+      $order_by,
+      $page,
+      $limit,
+      $search,
+      $search_by
+    );
+    $total = Query::count_all(self::$_table_name);
+
+    send_response(
+      true,
+      200,
+      ["schools returned successfully"],
+      $data,
+      true,
+      30,
+      $total
+    );
   }
 
   /**
