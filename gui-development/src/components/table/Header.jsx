@@ -32,7 +32,7 @@ export default function Header({
             appendURLParameter("limit", e.target.value);
             setPerPage(e.target.value);
           }}
-          defaultValue={perPage}>
+          value={perPage}>
           {itemsCount.map((n, i) => {
             return (
               <option value={n} key={i}>
@@ -46,7 +46,7 @@ export default function Header({
         <select
           className="p-1 border-2 rounded-sm cursor-pointer"
           onChange={(e) => setSearchByLocal(e.target.value)}
-          defaultValue={searchBy}>
+          value={searchBy}>
           <option>column</option>
           {title.map((item, i) => (
             <option value={item} key={i}>
