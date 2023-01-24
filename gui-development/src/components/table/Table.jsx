@@ -18,6 +18,7 @@ export default function Table({
   total,
   title,
   data,
+  emptyMessage = "Sorry, no data found",
   footer = false,
   header = true,
   ...props
@@ -61,6 +62,13 @@ export default function Table({
               </tr>
             );
           })}
+          {data.length === 0 && (
+            <tr>
+              <td className="bg-slate-50 px-2" colSpan={title.length}>
+                {emptyMessage}
+              </td>
+            </tr>
+          )}
         </tbody>
         {footer === true && (
           <tfoot className="bg-slate-200">

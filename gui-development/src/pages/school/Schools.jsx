@@ -31,8 +31,6 @@ export default function Schools({ ...props }) {
       currentPage: getSearchParameter("page"),
     };
 
-    console.log(params);
-
     if (params.order) setOrder(params.order);
     if (params.orderBy) setOrderBy(params.orderBy);
     if (params.search) setSearch(params.search);
@@ -40,8 +38,6 @@ export default function Schools({ ...props }) {
     if (params.itemsPerPage) setItemsPerPage(parseInt(params.itemsPerPage));
     if (params.currentPage) setCurrentPage(parseInt(params.currentPage));
   }, []);
-
-  console.log(itemsPerPage);
 
   useEffect(() => {
     http
