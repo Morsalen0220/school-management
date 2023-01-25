@@ -1,11 +1,20 @@
 import { Link, useResolvedPath } from "react-router-dom";
 import { useEffect, useState } from "react";
 
+function DropDownIcon({ open = false }) {
+  return (
+    <span className={`inline-block ml-2  ${open ? "rotate-90" : "-rotate-90"}`}>
+      &#10094;
+    </span>
+  );
+}
+
 function MenuItem({
-  to,
+  to = "#",
   topLevelMenu = false,
   exact = false,
   children,
+  hightLight = false,
   ...props
 }) {
   const { pathname } = useResolvedPath();
@@ -22,9 +31,9 @@ function MenuItem({
         active
           ? topLevelMenu
             ? "bg-emerald-300 text-gray-900 border-white font-semibold"
-            : "bg-gray-100"
-          : "text-black hover:bg-gray-100"
-      }`}
+            : "bg-gray-200"
+          : "text-black hover:bg-gray-200 "
+      } ${!active && hightLight ? "bg-gray-200" : ""} `}
       to={to}
       {...props}>
       {children}
@@ -66,14 +75,29 @@ export default function Sidebar({ ...props }) {
     return openMenu.includes(menu);
   };
 
+  const toggleMenu = (menu) => {
+    if (openMenu.includes(menu))
+      return setOpenMenu([...openMenu.filter((item) => item !== menu)]);
+    setOpenMenu([...openMenu, menu]);
+  };
+
   return (
     <aside
-      className={`relative shadow-xl min-h-screen w-full transition bg-white ${
+      className={`relative shadow-xl min-h-screen w-full transition bg-white border-t-2 ${
         isMenuOpen ? "max-w-fit" : "max-w-0"
       }`}>
-      <div className="overflow-hidden transition flex flex-col">
-        <MenuItem to="/school" topLevelMenu={true}>
-          School
+      <nav className="overflow-hidden transition flex flex-col">
+        <MenuItem
+          to="/school"
+          topLevelMenu={true}
+          hightLight={isMainMenuOpen("school")}
+          onClick={(e) => {
+            e.preventDefault();
+            toggleMenu("school");
+          }}>
+          <div className="flex justify-between">
+            <span>School</span> <DropDownIcon open={isMainMenuOpen("school")} />
+          </div>
         </MenuItem>
 
         <div
@@ -86,8 +110,17 @@ export default function Sidebar({ ...props }) {
           </div>
         </div>
 
-        <MenuItem to="/users" topLevelMenu={true}>
-          Users
+        <MenuItem
+          to="/users"
+          topLevelMenu={true}
+          hightLight={isMainMenuOpen("users")}
+          onClick={(e) => {
+            e.preventDefault();
+            toggleMenu("users");
+          }}>
+          <div className="flex justify-between">
+            <span> Users</span> <DropDownIcon open={isMainMenuOpen("users")} />
+          </div>
         </MenuItem>
 
         <div
@@ -102,8 +135,18 @@ export default function Sidebar({ ...props }) {
           </div>
         </div>
 
-        <MenuItem to="/class" topLevelMenu={true}>
-          Class
+        <MenuItem
+          to="/class"
+          topLevelMenu={true}
+          hightLight={isMainMenuOpen("class")}
+          onClick={(e) => {
+            e.preventDefault();
+            toggleMenu("class");
+          }}>
+          <div className="flex justify-between">
+            <span>Class</span>
+            <DropDownIcon open={isMainMenuOpen("class")} />
+          </div>
         </MenuItem>
         <MenuItem to="/notice" topLevelMenu={true}>
           Notice
@@ -114,7 +157,7 @@ export default function Sidebar({ ...props }) {
         <MenuItem to="/book" topLevelMenu={true}>
           Books
         </MenuItem>
-      </div>
+      </nav>
 
       <span
         title={isMenuOpen ? "close menu" : "open menu"}

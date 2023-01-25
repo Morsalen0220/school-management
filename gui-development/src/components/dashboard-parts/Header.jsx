@@ -15,7 +15,7 @@ function MenuLink({ to, children, ...props }) {
 
 function Menu() {
   return (
-    <div className="absolute right-4 shadow-2xl rounded-sm bg-white z-20">
+    <div className="absolute right-4 shadow-2xl rounded-sm bg-slate-100 z-20">
       <MenuLink to="/profile">Profile</MenuLink>
       <MenuLink to="/settings">Settings</MenuLink>
       <hr />
