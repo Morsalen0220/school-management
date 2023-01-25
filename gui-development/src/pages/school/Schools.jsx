@@ -5,6 +5,8 @@ import getSearchParameter from "../../util/getSearchParam";
 import useLoading from "../../hooks/useLoading";
 import useUpdateTitle from "../../hooks/useUpdateTitle";
 import Table from "../../components/table/Table";
+import { SecondaryButton } from "../../components/button/Button";
+import { Link } from "react-router-dom";
 
 export default function Schools({ ...props }) {
   useUpdateTitle("School");
@@ -61,9 +63,12 @@ export default function Schools({ ...props }) {
 
   return (
     <div {...props}>
-      <h2 className="text-2xl mb-3 border-b-2 font-lato font-semibold">
-        Schools
-      </h2>
+      <div className="flex justify-between items-center border-b-2 mb-3 pb-2">
+        <h2 className="text-2xl font-lato font-semibold">Schools</h2>
+        <SecondaryButton>
+          <Link to="/school/add">Add new</Link>
+        </SecondaryButton>
+      </div>
       <Table
         order={order}
         setOrder={setOrder}
