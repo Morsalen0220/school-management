@@ -15,7 +15,7 @@ const Center = lazy(() => import("./components/Center"));
 const Logout = lazy(() => import("./pages/auth/Logout"));
 const School = lazy(() => import("./pages/school/Schools"));
 const AddSchool = lazy(() => import("./pages/school/Add"));
-const Admin = lazy(() => import("./pages/users/Admin"));
+const Users = lazy(() => import("./pages/users/Users"));
 
 function App() {
   return (
@@ -60,7 +60,7 @@ function App() {
             <Route path="add" element={<AddSchool />} />
             <Route path="edit/:school_id" element={<AddSchool />} />
           </Route>
-          <Route path="users/admin" element={<Admin />} />
+          <Route path="users/:role" element={<Users />} />
           <Route path="logout" element={<Logout />} />
         </Route>
         {/* 404 */}
