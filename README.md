@@ -1,6 +1,5 @@
 # School management system
 ### Work in progress
-## [DEMO](http://school.triksy.xyz/)
 super admin email 
 ```
 admin@example.com
