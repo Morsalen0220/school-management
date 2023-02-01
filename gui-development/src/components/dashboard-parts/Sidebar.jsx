@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 
 function DropDownIcon({ open = false }) {
   return (
-    <span className={`inline-block ml-2  ${open ? "rotate-90" : "-rotate-90"}`}>
+    <span
+      className={`inline-block ml-2  ${open ? "-rotate-90" : "rotate-180"}`}>
       &#10094;
     </span>
   );
@@ -54,16 +55,9 @@ export default function Sidebar({ ...props }) {
      */
     const menu = pathname.slice(1).replace(/[/].+/, "");
     setOpenMenu([menu]);
-    /**
-     * ! Don't add openMenu to dependency it will cause infinite render
-     */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   useEffect(() => {
-    /**
-     * On big screen side should be open by default
-     */
     if (window.innerWidth > 1024) setIsMenuOpen(true);
   }, []);
 
