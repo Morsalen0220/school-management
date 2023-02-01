@@ -14,12 +14,14 @@ export default function Footer({
       : parseInt(showingFrom) + parseInt(itemsPerPage);
   return (
     <div {...props} className="flex justify-between mt-1">
-      <div>
-        showing from <span className="font-bold">{showingFrom}</span>&nbsp;
-        to&nbsp;
-        <span className="font-bold">{showingTo}</span>&nbsp; of total&nbsp;
-        {total}
-      </div>
+      {total && (
+        <div>
+          showing from <span className="font-bold">{showingFrom}</span>&nbsp;
+          to&nbsp;
+          <span className="font-bold">{showingTo}</span>&nbsp; of total&nbsp;
+          {total}
+        </div>
+      )}
       <Pagination
         total={total}
         currentPage={currentPage}

@@ -87,42 +87,45 @@ export default function Pagination({
     "inline-block px-2 py-1 font-bold cursor-pointer bg-emerald-300 rounded-sm text-gray-800 hover:bg-emerald-500 transition select-none";
 
   return (
-    <div>
-      <span className={currentPage === 1 ? "cursor-not-allowed" : ""}>
-        <span
-          title="previous page"
-          onClick={() => {
-            updatePageNumberInUrl(currentPage - 1);
-            setCurrentPage(currentPage - 1);
-          }}
-          className={`${className} ${
-            currentPage === 1 ? "bg-emerald-100 pointer-events-none" : ""
-          }`}>
-          &#8701;
+    totalPages > 1 && (
+      <div>
+        <span className={currentPage === 1 ? "cursor-not-allowed" : ""}>
+          <span
+            title="previous page"
+            onClick={() => {
+              updatePageNumberInUrl(currentPage - 1);
+              setCurrentPage(currentPage - 1);
+            }}
+            className={`${className} ${
+              currentPage === 1 ? "bg-emerald-100 pointer-events-none" : ""
+            }`}>
+            &#8701;
+          </span>
         </span>
-      </span>
 
-      <Pages
-        currentPage={currentPage}
-        totalPages={totalPages}
-        setCurrentPage={setCurrentPage}
-      />
+        <Pages
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
 
-      <span className={currentPage === totalPages ? "cursor-not-allowed" : ""}>
         <span
-          title="next page"
-          onClick={() => {
-            updatePageNumberInUrl(currentPage + 1);
-            setCurrentPage(currentPage + 1);
-          }}
-          className={`${className} ml-1 ${
-            currentPage === totalPages
-              ? "bg-emerald-100 pointer-events-none"
-              : ""
-          }`}>
-          &#8702;
+          className={currentPage === totalPages ? "cursor-not-allowed" : ""}>
+          <span
+            title="next page"
+            onClick={() => {
+              updatePageNumberInUrl(currentPage + 1);
+              setCurrentPage(currentPage + 1);
+            }}
+            className={`${className} ml-1 ${
+              currentPage === totalPages
+                ? "bg-emerald-100 pointer-events-none"
+                : ""
+            }`}>
+            &#8702;
+          </span>
         </span>
-      </span>
-    </div>
+      </div>
+    )
   );
 }
