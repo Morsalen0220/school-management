@@ -99,6 +99,9 @@ export default function AddSchool() {
 
   return (
     <div>
+      <div className="border-b-2 mb-3 pb-2">
+        <h2 className="text-2xl font-lato font-semibold">Add New School</h2>
+      </div>
       <Label htmlFor="name">
         School name <RequiredMark />
       </Label>
