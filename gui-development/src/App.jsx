@@ -16,6 +16,7 @@ const Logout = lazy(() => import("./pages/auth/Logout"));
 const School = lazy(() => import("./pages/school/Schools"));
 const AddSchool = lazy(() => import("./pages/school/Add"));
 const Users = lazy(() => import("./pages/users/Users"));
+const AddUser = lazy(() => import("./pages/users/Add"));
 
 function App() {
   return (
@@ -61,6 +62,7 @@ function App() {
             <Route path="edit/:school_id" element={<AddSchool />} />
           </Route>
           <Route path="users/:role" element={<Users />} />
+          <Route path="users/:role/add" element={<AddUser />} />
           <Route path="logout" element={<Logout />} />
         </Route>
         {/* 404 */}
