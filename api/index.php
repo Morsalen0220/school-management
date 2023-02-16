@@ -99,6 +99,12 @@ try {
           break;
 
         case "accountant":
+          $request
+            ->auth("admin")
+            ->get("Accountant", "get")
+            ->post("Accountant", "create")
+            ->patch("Accountant", "update");
+
           send_response(false, 405, ["method not allowed"]);
           break;
 
