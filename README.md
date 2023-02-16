@@ -24,4 +24,3 @@ admin12345
 ## Works on
 
 - Apache
-- Nginx (Not yet configured)
