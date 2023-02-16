@@ -15,25 +15,23 @@ spl_autoload_register(function ($className) {
 
 class Request
 {
-  # Targeted request
   private $_request = null;
 
-  /**
-   * Initiate request
-   * @param RequestObject incoming request
-   */
+  private $_user_role_points = [
+    "super_admin" => 20,
+    "admin" => 15,
+    "accountant" => 10,
+    "teacher" => 10,
+    "librarian" => 10,
+    "parent" => 7,
+    "student" => 5,
+  ];
+
   public function __construct($request)
   {
     $this->_request = $request;
   }
 
-  /**
-   * Handle get request
-   * @param string class name
-   * @param string method name
-   * @param string parameter
-   * @return Request
-   */
   public function get(
     string $class,
     string $method,
@@ -45,13 +43,6 @@ class Request
     return $this;
   }
 
-  /**
-   * Handle post request
-   * @param string class name
-   * @param string method name
-   * @param string parameter
-   * @return Request
-   */
   public function post(string $class, string $method, $parameter = ""): Request
   {
     if ($this->_request["REQUEST_METHOD"] === "POST") {
@@ -60,13 +51,6 @@ class Request
     return $this;
   }
 
-  /**
-   * Handle patch request
-   * @param string class name
-   * @param string method name
-   * @param string parameter
-   * @return Request
-   */
   public function patch(string $class, string $method, $parameter = ""): Request
   {
     if ($this->_request["REQUEST_METHOD"] === "PATCH") {
@@ -75,13 +59,6 @@ class Request
     return $this;
   }
 
-  /**
-   * Handle delete request
-   * @param string class name
-   * @param string method name
-   * @param string parameter
-   * @return Request
-   */
   public function delete(
     string $class,
     string $method,
@@ -93,10 +70,6 @@ class Request
     return $this;
   }
 
-  /**
-   * Handle options request
-   * @return Request
-   */
   public function options(): Request
   {
     if ($this->_request["REQUEST_METHOD"] === "OPTIONS") {
@@ -104,6 +77,18 @@ class Request
       exit();
     }
     return $this;
+  }
+
+  private function valid_role($role): bool
+  {
+    if ($role === "any") {
+      return true;
+    }
+
+    $required_point = $this->_user_role_points[$role];
+    $current_point = $this->_user_role_points[LOGGEDIN_IN_USER_ROLE];
+
+    return $required_point <= $current_point;
   }
 
   /**
@@ -114,15 +99,15 @@ class Request
   {
     $data = User::verify_session();
 
-    if ($data["user_role"] !== $role && $role !== "any") {
+    define("LOGGEDIN_IN_USER_ROLE", $data["user_role"]);
+    define("LOGGEDIN_IN_USER_ID", $data["user_id"]);
+    define("LOGGEDIN_IN_USER_SCHOOL_ID", ""); // TODO
+
+    if (!$this->valid_role($role)) {
       send_response(false, 403, [
         'you don\'t have access to complete this request',
       ]);
     }
-
-    define("LOGGEDIN_IN_USER_ROLE", $data["user_role"]);
-    define("LOGGEDIN_IN_USER_ID", $data["user_id"]);
-    define("LOGGEDIN_IN_USER_SCHOOL_ID", ""); // TODO
 
     return $this;
   }
