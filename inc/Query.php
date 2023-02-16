@@ -181,7 +181,7 @@ class Query extends CustomException
       $this->_table_prefix .
       "accountant (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            accountant_id VARCHAR(500) NULL,
+            user_id VARCHAR(500) NULL,
             name VARCHAR(500) NOT NULL,
             address VARCHAR(500) NULL,
             mobile_number VARCHAR(50) NULL,
@@ -189,6 +189,7 @@ class Query extends CustomException
             salary_amount VARCHAR(500) NULL,
             image VARCHAR(500) NOT NULL,
             join_date DATETIME NOT NULL,
+            password VARCHAR(500) NOT NULL,
             school_id VARCHAR(500) NOT NULL,
             created_by VARCHAR(200) NOT NULL,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -208,7 +209,7 @@ class Query extends CustomException
       $this->_table_prefix .
       "librarian (
             id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-            librarian_id VARCHAR(500) NULL,
+            user_id VARCHAR(500) NULL,
             name VARCHAR(500) NOT NULL,
             father_name VARCHAR(500) NOT NULL,
             mother_name VARCHAR(500) NOT NULL,
