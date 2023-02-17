@@ -1,11 +1,14 @@
 {
   "name": "school-management-system",
+  "private": true,
   "version": "0.1.0",
-  "description": "### Work in progress",
-  "main": "",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "update:gui": "node ./update-gui.js"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "tailwindcss:watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/App.css --watch",
+    "tailwindcss:build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/App.css --minify"
   },
   "repository": {
     "type": "git",
@@ -18,15 +21,25 @@
   },
   "homepage": "https://github.com/abkarim/school-management-system#readme",
   "dependencies": {
-    "fs-extra": "^11.1.0"
+    "axios": "^1.2.0",
+    "fs-extra": "^11.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-phone-input-2": "^2.15.1",
+    "react-router-dom": "^6.4.3"
   },
   "devDependencies": {
     "@prettier/plugin-php": "^0.19.2",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
     "eslint": "^8.29.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "tailwindcss": "^3.2.7",
+    "vite": "^4.1.0"
   }
 }
