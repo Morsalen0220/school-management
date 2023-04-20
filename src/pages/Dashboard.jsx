@@ -5,6 +5,7 @@ import Sidebar from "../components/dashboard-parts/Sidebar";
 import Header from "../components/dashboard-parts/Header";
 import useLoading from "../hooks/useLoading";
 import http from "../util/http";
+import { isObjectEmpty } from "../util/isObjectEmpty";
 
 export default function Dashboard({ children }) {
   const [userData, setUserData] = useState({});
@@ -27,7 +28,7 @@ export default function Dashboard({ children }) {
   }, [navigate]);
 
   return (
-    userData !== {} && (
+    isObjectEmpty(userData) === false && (
       <div>
         <Header />
         <div className="flex">
