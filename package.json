@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=/public",
     "preview": "vite preview",
     "tailwindcss:watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/App.css --watch",
-    "tailwindcss:build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/App.css --minify"
+    "tailwindcss:build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/App.css --minify",
+    "setup:gui": "node setup-gui.cjs"
   },
   "repository": {
     "type": "git",

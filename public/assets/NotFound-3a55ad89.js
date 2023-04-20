@@ -1,0 +1,1 @@
+import{j as s,a as e}from"./index-37e3ab65.js";function n({...t}){return s("div",{children:[e("h1",{className:"text-6xl",children:"404"}),e("p",{className:"text-lg",children:"The page not found"})]})}export{n as default};
