@@ -1,13 +1,6 @@
 # School management system
+
 ### Work in progress
-super admin email 
-```
-admin@example.com
-```
-super admin password
-```
-admin12345
-```
 
 ## Backend Technology
 
