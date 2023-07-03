@@ -17,28 +17,28 @@
  * Database host
  * require to connect with database
  */
-define("DATABASE_HOSTNAME", "localhost");
+define('DATABASE_HOSTNAME', 'localhost');
 
 /**
  * Database name
  * require to connect with database
  ** Which database to connect
  */
-define("DATABASE_NAME", "sc_management");
+define('DATABASE_NAME', 'sc_management');
 
 /**
  * Database user username
  * require to connect with database
  ** Username to use in connection
  */
-define("DATABASE_USERNAME", "root");
+define('DATABASE_USERNAME', 'root');
 
 /**
  * Database user password
  * require to connect with database
  ** Password for the use to use in connection
  */
-define("DATABASE_PASSWORD", "root");
+define('DATABASE_PASSWORD', 'root');
 
 /**
  * Database charset
@@ -50,7 +50,7 @@ define("DATABASE_CHARSET", "utf8");
  * Database table prefix
  * Prepend to table name
  */
-define("TABLE_PREFIX", "");
+define('TABLE_PREFIX', '');
 
 /**
  * Default user image name
@@ -69,13 +69,13 @@ define("STUDENT_ID_START_FROM", "000000000000001");
 define("MAX_IMAGE_UPLOAD_SIZE", 10);
 
 # Handle installation
-define("APP_INSTALLED", "1");
+define('APP_INSTALLED', '1');
 
 /**
  * Installer IP
  * If same required to create super admin
  */
-define("APP_INSTALLER_IP", "::1");
+define('APP_INSTALLER_IP', '::1');
 
 /**
  * Environment
