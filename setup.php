@@ -4,12 +4,14 @@ if (isset($_POST["submit"])) {
      * Update data
      */
     function update(string $constant, string $value, string $data): string {
-        $appendValue = "define('$constant', '$value')";
+        $value = "define('$constant', '$value');";
+
         /**
          * Regex to search for a constant name
          * search for define('SOME_NAME', 'SOME VALUE');
          */
-        return preg_replace("/define\((\s+)?\'$constant\'(\s+)?,(\s+)?\'(?'target'.+)?\'(\s+)?\)/", $appendValue, $data);
+        $pattern = "/define\(['\"]" . preg_quote($constant, '/') . "['\"],.+;/";
+        return preg_replace($pattern, $value, $data);
     }
 
     $data = [
@@ -32,7 +34,7 @@ if (isset($_POST["submit"])) {
     }
 
     if (!file_put_contents(__DIR__ . '/config.php', $fileData)) {
-        echo "Something went wrong please try again later";
+        echo "Sorry, it looks like doesn't have enough permission to write changes in config.php";
     } else {
         /**
          * Don't stop script if user abort
