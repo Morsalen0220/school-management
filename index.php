@@ -22,8 +22,8 @@ if (APP_INSTALLED == false) {
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <script type="module" crossorigin src="/public/assets/index-37e3ab65.js"></script>
-  <link rel="stylesheet" href="/public/assets/index-47feb48f.css">
+  <script type="module" crossorigin src="/public/assets/index-8ca9d746.js"></script>
+  <link rel="stylesheet" href="/public/assets/index-619c888f.css">
 </head>
 
 <body>

@@ -1,1 +1,0 @@
-import{a as e}from"./index-37e3ab65.js";function n({...t}){return e("input",{type:"text",className:"bg-slate-50 border-2 p-1 rounded-sm w-full focus:border-gray-500 focus:outline-none text-lg text-gray-900",...t})}function o(t){return!0}export{n as T,o as i};

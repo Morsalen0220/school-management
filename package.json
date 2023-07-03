@@ -5,9 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base=/public",
+    "build": "vite build --base=/public && npm run generate:bundle",
     "preview": "vite preview",
-    "generate:gui": "node setup-gui.cjs",
     "generate:bundle": "node bundle.cjs"
   },
   "repository": {

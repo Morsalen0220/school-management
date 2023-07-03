@@ -1,1 +1,0 @@
-import{a as s}from"./index-37e3ab65.js";function n({children:t,small:a=!1,...e}){return s("label",{className:`${a?"text-sm":"text-lg"} text-gray-800 font-sans tracking-tight inline-block`,...e,children:t})}export{n as L};
