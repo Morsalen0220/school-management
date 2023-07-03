@@ -14,7 +14,7 @@ jobs:
           npm ci
           npm run build
           npm run generate:gui
-          npm run generate:final
+          npm run generate:bundle
 
       - name: Push 🚀
         uses: JamesIves/github-pages-deploy-action@v4
