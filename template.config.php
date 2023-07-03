@@ -17,7 +17,7 @@
  * Database host
  * require to connect with database
  */
-define("DATABASE_HOSTNAME", "localhost");
+define("DATABASE_HOSTNAME", "");
 
 /**
  * Database name
@@ -44,7 +44,7 @@ define("DATABASE_PASSWORD", "");
  * Database charset
  * require to create table in database
  */
-define("DATABASE_CHARSET", "");
+define("DATABASE_CHARSET", "utf8");
 
 /**
  * Database table prefix
