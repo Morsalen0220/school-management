@@ -1,7 +1,7 @@
 {
   "name": "school-management-system",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/abkarim/school-management-system#readme",
   "dependencies": {
+    "@flaticon/flaticon-uicons": "^2.2.0",
     "autoprefixer": "^10.4.14",
     "axios": "^1.2.0",
     "fs-extra": "^11.1.0",
