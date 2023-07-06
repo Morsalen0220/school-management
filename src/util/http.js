@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios';
 
 const productionURL = '/api';
-const devURL = 'http://localhost/api';
+const devURL = `http://localhost:${[import.meta.env.VITE_PORT]}/api`;
 
 export default axios.create({
-    baseURL: process.env.NODE_ENV === 'production' ? productionURL : devURL,
-    withCredentials: true
+	baseURL: import.meta.env.PROD ? productionURL : devURL,
+	withCredentials: true,
 });
