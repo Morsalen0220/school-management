@@ -1,4 +1,5 @@
 # School management system
+This projects main goal is to create an app that just install like [wordpress](https://wordpress.org/) installation process. 
 
 ## Work in progress
 
