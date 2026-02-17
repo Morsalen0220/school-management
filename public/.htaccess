@@ -1,0 +1,5 @@
+RewriteEngine On
+# to rewrite previous config and
+
+# Deny folder index listing
+Options -Indexes

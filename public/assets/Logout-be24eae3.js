@@ -1,0 +1,1 @@
+import{b as o,r as a}from"./index-1b9cd0c6.js";import{u as e,h as s}from"./http-49edf251.js";import{u}from"./useUpdateTitle-fb2e2d05.js";function g(){u("logout"),e(!0);const t=o();a.useEffect(()=>{s.get("/logout").finally(()=>{t("/login")})},[t])}export{g as default};

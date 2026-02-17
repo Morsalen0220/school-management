@@ -1,0 +1,1 @@
+import{a as s}from"./index-1b9cd0c6.js";function n({children:t,small:a=!1,...e}){return s("label",{className:`${a?"text-sm":"text-lg"} text-gray-800 font-sans tracking-tight inline-block`,...e,children:t})}export{n as L};

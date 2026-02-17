@@ -1,0 +1,1 @@
+import{a as t}from"./index-1b9cd0c6.js";function o({...e}){return t("input",{type:"email",className:"bg-slate-50  border-2 p-1 rounded-sm w-full focus:border-gray-500 focus:outline-none text-lg text-gray-900",...e})}export{o as E};

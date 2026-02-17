@@ -1,0 +1,1 @@
+import{r as e,b as i,a as u}from"./index-1b9cd0c6.js";import g from"./Center-c5b7d9c8.js";import{u as f,h as c}from"./http-49edf251.js";function p({children:a}){const[s,o]=e.useState(!0),[n,r]=e.useState(!0),t=i();return f(n),e.useEffect(()=>{c.get("/user/me").then(()=>{t("/")}).catch(()=>{o(!1)}).finally(()=>{r(!1)})},[t]),!s&&u(g,{children:a})}export{p as default};
