@@ -24,6 +24,43 @@ if (APP_INSTALLED == false) {
     rel="stylesheet">
   <?php
   $assetDirectory = __DIR__ . '/public/assets';
+
+  $manifestFile = $assetDirectory . '/manifest.json';
+  $cssBundle = '';
+  $jsBundle = '';
+
+  if (file_exists($manifestFile)) {
+    $manifestContent = file_get_contents($manifestFile);
+    $manifest = json_decode($manifestContent ?: '', true);
+
+    if (is_array($manifest) && isset($manifest['index.html'])) {
+      $entry = $manifest['index.html'];
+
+      if (isset($entry['file'])) {
+        $jsBundle = '/public/assets/' . ltrim($entry['file'], '/');
+      }
+
+      if (isset($entry['css'][0])) {
+        $cssBundle = '/public/assets/' . ltrim($entry['css'][0], '/');
+      }
+    }
+  }
+
+  if (empty($jsBundle) || empty($cssBundle)) {
+    if (is_dir($assetDirectory)) {
+      $cssMatches = glob($assetDirectory . '/index-*.css');
+      $jsMatches = glob($assetDirectory . '/index-*.js');
+
+      if (empty($cssBundle) && $cssMatches !== false && !empty($cssMatches)) {
+        usort($cssMatches, static fn($a, $b) => filemtime($b) <=> filemtime($a));
+        $cssBundle = '/public/assets/' . basename($cssMatches[0]);
+      }
+
+      if (empty($jsBundle) && $jsMatches !== false && !empty($jsMatches)) {
+        usort($jsMatches, static fn($a, $b) => filemtime($b) <=> filemtime($a));
+        $jsBundle = '/public/assets/' . basename($jsMatches[0]);
+      }
+
   $cssBundle = '';
   $jsBundle = '';
 
@@ -39,6 +76,7 @@ if (APP_INSTALLED == false) {
     if ($jsMatches !== false && !empty($jsMatches)) {
       rsort($jsMatches);
       $jsBundle = '/public/assets/' . basename($jsMatches[0]);
+
     }
   }
   ?>
