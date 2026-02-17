@@ -1,0 +1,284 @@
+{
+  "_Button-bdd968da.js": {
+    "file": "assets/Button-bdd968da.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_EmailInput-4f5d1958.js": {
+    "file": "assets/EmailInput-4f5d1958.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_Label-99b5ab32.js": {
+    "file": "assets/Label-99b5ab32.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_Link-fdd0db16.js": {
+    "file": "assets/Link-fdd0db16.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_Number-16ae4379.js": {
+    "file": "assets/Number-16ae4379.js",
+    "imports": [
+      "index.html",
+      "_Label-99b5ab32.js"
+    ]
+  },
+  "_PasswordInput-e7891627.js": {
+    "file": "assets/PasswordInput-e7891627.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_Table-de768a07.js": {
+    "file": "assets/Table-de768a07.js",
+    "imports": [
+      "_isEmpty-cc6011a7.js",
+      "index.html"
+    ]
+  },
+  "_TextInput-675f72f0.js": {
+    "file": "assets/TextInput-675f72f0.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_http-49edf251.js": {
+    "file": "assets/http-49edf251.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_isEmail-2fee8878.js": {
+    "file": "assets/isEmail-2fee8878.js"
+  },
+  "_isEmpty-cc6011a7.js": {
+    "file": "assets/isEmpty-cc6011a7.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "_uppercaseFirstLetter-d3dabad6.js": {
+    "file": "assets/uppercaseFirstLetter-d3dabad6.js"
+  },
+  "_useUpdateTitle-fb2e2d05.js": {
+    "file": "assets/useUpdateTitle-fb2e2d05.js",
+    "imports": [
+      "index.html"
+    ]
+  },
+  "index.css": {
+    "file": "assets/index-23be053e.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "assets": [
+      "assets/load-3723d9c9.png"
+    ],
+    "css": [
+      "assets/index-23be053e.css"
+    ],
+    "dynamicImports": [
+      "src/pages/Dashboard.jsx",
+      "src/pages/NotFound.jsx",
+      "src/pages/auth/Default.jsx",
+      "src/pages/auth/ForgotPassword.jsx",
+      "src/pages/auth/LoginHandler.jsx",
+      "src/pages/auth/ResetPassword.jsx",
+      "src/pages/CreateSuperUser.jsx",
+      "src/pages/auth/Login.jsx",
+      "src/components/Center.jsx",
+      "src/pages/auth/Logout.jsx",
+      "src/pages/school/Schools.jsx",
+      "src/pages/school/Add.jsx",
+      "src/pages/users/Users.jsx",
+      "src/pages/users/Add.jsx"
+    ],
+    "file": "assets/index-1b9cd0c6.js",
+    "isEntry": true,
+    "src": "index.html"
+  },
+  "src/components/Center.jsx": {
+    "file": "assets/Center-c5b7d9c8.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/components/Center.jsx"
+  },
+  "src/img/load.png": {
+    "file": "assets/load-3723d9c9.png",
+    "src": "src/img/load.png"
+  },
+  "src/pages/CreateSuperUser.jsx": {
+    "file": "assets/CreateSuperUser-41320e4a.js",
+    "imports": [
+      "index.html",
+      "_EmailInput-4f5d1958.js",
+      "_Label-99b5ab32.js",
+      "_TextInput-675f72f0.js",
+      "_PasswordInput-e7891627.js",
+      "_Button-bdd968da.js",
+      "_http-49edf251.js",
+      "_isEmpty-cc6011a7.js",
+      "_isEmail-2fee8878.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/CreateSuperUser.jsx"
+  },
+  "src/pages/Dashboard.jsx": {
+    "file": "assets/Dashboard-2c8a3c16.js",
+    "imports": [
+      "index.html",
+      "_http-49edf251.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/Dashboard.jsx"
+  },
+  "src/pages/NotFound.jsx": {
+    "file": "assets/NotFound-bc6d0f6b.js",
+    "imports": [
+      "index.html"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/NotFound.jsx"
+  },
+  "src/pages/auth/Default.jsx": {
+    "file": "assets/Default-2a7c72fa.js",
+    "imports": [
+      "index.html",
+      "_Link-fdd0db16.js",
+      "_useUpdateTitle-fb2e2d05.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/auth/Default.jsx"
+  },
+  "src/pages/auth/ForgotPassword.jsx": {
+    "file": "assets/ForgotPassword-f91d6b01.js",
+    "imports": [
+      "index.html",
+      "_Button-bdd968da.js",
+      "_EmailInput-4f5d1958.js",
+      "_Label-99b5ab32.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/auth/ForgotPassword.jsx"
+  },
+  "src/pages/auth/Login.jsx": {
+    "file": "assets/Login-9b4d3fe7.js",
+    "imports": [
+      "index.html",
+      "_Button-bdd968da.js",
+      "_EmailInput-4f5d1958.js",
+      "_Label-99b5ab32.js",
+      "_PasswordInput-e7891627.js",
+      "_useUpdateTitle-fb2e2d05.js",
+      "_Link-fdd0db16.js",
+      "_http-49edf251.js",
+      "_isEmpty-cc6011a7.js",
+      "_isEmail-2fee8878.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/auth/Login.jsx"
+  },
+  "src/pages/auth/LoginHandler.jsx": {
+    "file": "assets/LoginHandler-f4834042.js",
+    "imports": [
+      "index.html",
+      "src/components/Center.jsx",
+      "_http-49edf251.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/auth/LoginHandler.jsx"
+  },
+  "src/pages/auth/Logout.jsx": {
+    "file": "assets/Logout-be24eae3.js",
+    "imports": [
+      "index.html",
+      "_http-49edf251.js",
+      "_useUpdateTitle-fb2e2d05.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/auth/Logout.jsx"
+  },
+  "src/pages/auth/ResetPassword.jsx": {
+    "file": "assets/ResetPassword-c04eef50.js",
+    "imports": [
+      "index.html",
+      "_Button-bdd968da.js",
+      "_Label-99b5ab32.js",
+      "_PasswordInput-e7891627.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/auth/ResetPassword.jsx"
+  },
+  "src/pages/school/Add.jsx": {
+    "file": "assets/Add-2b671207.js",
+    "imports": [
+      "index.html",
+      "_Button-bdd968da.js",
+      "_EmailInput-4f5d1958.js",
+      "_Label-99b5ab32.js",
+      "_TextInput-675f72f0.js",
+      "_isEmpty-cc6011a7.js",
+      "_http-49edf251.js",
+      "_useUpdateTitle-fb2e2d05.js",
+      "_isEmail-2fee8878.js",
+      "_Number-16ae4379.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/school/Add.jsx"
+  },
+  "src/pages/school/Schools.jsx": {
+    "file": "assets/Schools-07177fb8.js",
+    "imports": [
+      "index.html",
+      "_isEmpty-cc6011a7.js",
+      "_http-49edf251.js",
+      "_Table-de768a07.js",
+      "_useUpdateTitle-fb2e2d05.js",
+      "_Button-bdd968da.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/school/Schools.jsx"
+  },
+  "src/pages/users/Add.jsx": {
+    "file": "assets/Add-8909d683.js",
+    "imports": [
+      "index.html",
+      "_EmailInput-4f5d1958.js",
+      "_Label-99b5ab32.js",
+      "_TextInput-675f72f0.js",
+      "_Number-16ae4379.js",
+      "_useUpdateTitle-fb2e2d05.js",
+      "_uppercaseFirstLetter-d3dabad6.js",
+      "_PasswordInput-e7891627.js",
+      "_Button-bdd968da.js",
+      "_isEmpty-cc6011a7.js",
+      "_isEmail-2fee8878.js",
+      "_http-49edf251.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/users/Add.jsx"
+  },
+  "src/pages/users/Users.jsx": {
+    "file": "assets/Users-1a785b96.js",
+    "imports": [
+      "index.html",
+      "_Button-bdd968da.js",
+      "_isEmpty-cc6011a7.js",
+      "_Table-de768a07.js",
+      "_http-49edf251.js",
+      "_useUpdateTitle-fb2e2d05.js",
+      "_uppercaseFirstLetter-d3dabad6.js"
+    ],
+    "isDynamicEntry": true,
+    "src": "src/pages/users/Users.jsx"
+  }
+}
