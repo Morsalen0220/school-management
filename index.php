@@ -22,35 +22,8 @@ if (APP_INSTALLED == false) {
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <?php
-  $assetDirectory = __DIR__ . '/public/assets';
-  $cssBundle = '';
-  $jsBundle = '';
-
-  if (is_dir($assetDirectory)) {
-    $cssMatches = glob($assetDirectory . '/index-*.css');
-    $jsMatches = glob($assetDirectory . '/index-*.js');
-
-    if ($cssMatches !== false && !empty($cssMatches)) {
-      rsort($cssMatches);
-      $cssBundle = '/public/assets/' . basename($cssMatches[0]);
-    }
-
-    if ($jsMatches !== false && !empty($jsMatches)) {
-      rsort($jsMatches);
-      $jsBundle = '/public/assets/' . basename($jsMatches[0]);
-    }
-  }
-  ?>
-  <?php if (!empty($cssBundle)) : ?>
-    <link rel="stylesheet" href="<?= $cssBundle ?>">
-  <?php endif; ?>
-
-  <?php if (!empty($jsBundle)) : ?>
-    <script type="module" crossorigin src="<?= $jsBundle ?>"></script>
-  <?php else : ?>
-    <!-- Frontend bundle not found. Run `npm run build` to generate public/assets files. -->
-  <?php endif; ?>
+  <script type="module" crossorigin src="/public/assets/index-1b9cd0c6.js"></script>
+  <link rel="stylesheet" href="/public/assets/index-23be053e.css">
 </head>
 
 <body>
