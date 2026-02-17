@@ -47,16 +47,13 @@ if (!fs.existsSync(CURRENT_DIRECTORY + '/dist')) {
 }
 
 /**
- * Copy index.html file into index.php
+ * Keep index.php template intact.
+ *
+ * index.php contains runtime logic that resolves the current hashed bundles
+ * from /public/assets. Overwriting it with dist/index.html would re-introduce
+ * hardcoded asset filenames and break installs that do not commit built assets.
  */
-let htmlData = fs.readFileSync(CURRENT_DIRECTORY + '/dist/index.html', 'utf-8');
-
-let indexFileData = fs.readFileSync(CURRENT_DIRECTORY + '/index.php', 'utf-8');
-indexFileData = indexFileData.replace(/<!doctype(.*\s*)+/i, htmlData);
-
-fs.writeFileSync(CURRENT_DIRECTORY + '/index.php', indexFileData);
-
-print('updating content in /index.php done');
+print('skipping /index.php overwrite (template kept as source of truth)', 'info');
 
 /**
  * Delete previous file
