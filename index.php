@@ -24,6 +24,7 @@ if (APP_INSTALLED == false) {
     rel="stylesheet">
   <?php
   $assetDirectory = __DIR__ . '/public/assets';
+
   $manifestFile = $assetDirectory . '/manifest.json';
   $cssBundle = '';
   $jsBundle = '';
@@ -59,6 +60,23 @@ if (APP_INSTALLED == false) {
         usort($jsMatches, static fn($a, $b) => filemtime($b) <=> filemtime($a));
         $jsBundle = '/public/assets/' . basename($jsMatches[0]);
       }
+
+  $cssBundle = '';
+  $jsBundle = '';
+
+  if (is_dir($assetDirectory)) {
+    $cssMatches = glob($assetDirectory . '/index-*.css');
+    $jsMatches = glob($assetDirectory . '/index-*.js');
+
+    if ($cssMatches !== false && !empty($cssMatches)) {
+      rsort($cssMatches);
+      $cssBundle = '/public/assets/' . basename($cssMatches[0]);
+    }
+
+    if ($jsMatches !== false && !empty($jsMatches)) {
+      rsort($jsMatches);
+      $jsBundle = '/public/assets/' . basename($jsMatches[0]);
+
     }
   }
   ?>
